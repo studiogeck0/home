@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Gecko</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHVS7DKKHF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-GHVS7DKKHF');
+    </script>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://studioginkgo.github.io/home/">
+    <meta property="og:title" content="Studio Gecko - Your Private Playground">
+    <meta property="og:description" content="Purely for Pleasure.">
+    <meta property="og:image" content="https://studioginkgo.github.io/home/res/og_image.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="studioginkgo.github.io">
+    <meta name="twitter:url" content="https://studioginkgo.github.io/home/">
+    <meta name="twitter:title" content="Studio Gecko">
+    <meta name="twitter:description" content="Studio Gecko - Your Private Playground">
+    <meta name="twitter:image" content="https://studioginkgo.github.io/home/res/og_image.png">
+    
+    <style>
+        /* --- 기본 설정 --- */
+        :root {
+            --primary-bg: #121212;
+            --accent: #E3C565;
+            --steam: #1b2838;
+            --humble: #cb2d3e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+            background-color: var(--primary-bg);
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+        /* --- 유틸리티 --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .text-accent { color: var(--accent); }
+
+        /* --- 헤더 --- */
+        header {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            z-index: 1000;
+            background: transparent;
+        }
+        /* 기존 .logo 스타일은 그대로 유지 */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 15px; /* 이미지와 텍스트 사이 간격 (조절 가능) */
+            margin-top: 20px;
+        }
+
+        /* 새로 추가할 이미지 스타일 */
+        .logo-icon {
+            height: 40px; /* 로고 높이 (텍스트 크기에 맞춰 조절하세요) */
+            width: auto;  /* 비율 자동 유지 */
+            object-fit: contain; /* 찌그러짐 방지 */
+        }
+
+        /* --- 히어로 섹션 --- */
+        .hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: #000;
+            overflow: hidden;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #ddd;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* --- 게임 리스트 --- */
+        .games-section { padding: 80px 0; background: #121212; }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 60px;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        /* --- 수정된 게임 카드 스타일 (616x353 비율) --- */
+        .game-card {
+            position: relative;
+            width: 100%;
+            /* 이미지가 깨지지 않도록 원본 해상도 근처로 최대 크기 제한 (취향에 따라 삭제 가능) */
+            /* max-width: 616px; */
+            max-width: 640px;
+
+            /* [핵심] 스팀 메인 캡슐 비율 고정 (616 / 353) */
+            aspect-ratio: 1232 /  706;
+            height: auto; /* 높이는 비율에 따라 자동 조절 */
+
+            margin: 0 auto 60px; /* 화면 가운데 정렬 + 하단 여백 */
+            border-radius: 12px; /* 캡슐 크기에 맞춰 둥근 모서리 약간 축소 */
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+            background: #222;
+            transition: transform 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .game-visual {
+            width: 100%;
+            height: 100%;
+            background-size: cover; /* 영역을 꽉 채움 */
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: transform 0.5s ease;
+        }
+
+        .game-card:hover .game-visual {
+            transform: scale(1.03);
+        }
+
+        /* [핵심] 카드 전체를 클릭 가능하게 하는 투명 링크 (Layer 1) */
+        .card-link-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1; /* 배경보다 위, 버튼보다 아래 */
+        }
+
+        /* 정보 영역 */
+        /* 카드가 작아졌으므로 텍스트 패딩도 조금 줄임 */
+        .game-info-layer {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            /* 그라데이션 높이 조정 */
+            background: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 60%, transparent);
+            padding: 25px 25px 20px; /* 여백 축소 */
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 15px;
+            pointer-events: none;
+        }
+
+        /* 폰트 크기도 카드 비율에 맞춰 살짝 조정 */
+        .info-text h3 {
+            font-size: 1.8rem; /* 기존 2rem에서 약간 축소 */
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .info-text .genre {
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .info-text h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #fff;
+        }
+
+        /* [핵심] 스토어 버튼 그룹 (Layer 2) - 카드 링크보다 위에 있어야 함 */
+        .store-buttons {
+            display: flex;
+            gap: 10px;
+            pointer-events: auto; /* 버튼은 클릭 가능해야 함 */
+            position: relative;
+            z-index: 2; /* 오버레이보다 위 */
+        }
+        .btn-store {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #fff;
+            background-color: rgba(255,255,255,0.1); 
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: 0.2s;
+        }
+        .btn-store:hover { background-color: #333; border-color: #fff; }
+        
+        /* 버튼별 고유 색상 */
+        .btn-steam:hover { border-color: #66c0f4; color: #66c0f4; }
+        .btn-humble:hover { border-color: #cc2929; color: #cc2929; }
+
+        /* 모바일 대응 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .game-info-layer { flex-direction: column; align-items: flex-start; }
+            .store-buttons { width: 100%; }
+            .btn-store { flex: 1; justify-content: center; }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            color: #666;
+            font-size: 0.8rem;
+            border-top: 1px solid #222;
+        }
+        
+        /* 동영상 배경 스타일 */
+        .hero-bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 중요: 영상을 화면에 꽉 차게 자름 (background-size: cover와 동일) */
+            z-index: 0;        /* 텍스트 뒤로 보냄 */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="container">
+        <div class="logo">
+            <img src="./res/logo.png" alt="Studio Gecko Logo" class="logo-icon">
+            STUDIO GECKO
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay"></div> <video autoplay muted loop playsinline class="hero-bg-video">
+        <source src="./res/hero_video.mp4" type="video/mp4">
+        Your browser does not support the video.
+    </video>
+
+        <div class="hero-content">
+            <h1>Adapt. Evolve. Create.</h1>
+        </div>
+    </section>
+
+    <section class="games-section container">
+        <h2 class="section-title">Our Games</h2>
+
+        <div class="game-card">
+            <div class="game-visual" style="background-image: url('./res/capsule_bs.png');"></div>
+            
+            <a href="#" target="_blank" class="card-link-overlay" title="View Detail"></a>
+
+            <div class="game-info-layer">
+                <div class="info-text">
+                    <div class="genre">Idle Tidy Up</div>
+                    <h3>Bottle Sorter: Tidy Up the Liquor Shop!</h3>
+                </div>
+                
+                <div class="store-buttons">
+                    <a href="#" target="_blank" class="btn-store btn-steam">
+                        <i class="fa-brands fa-steam"></i> Steam
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><a href="mailto:studiogeckgo00@gmail.com">Contact: studiogeckgo00@gmail.com</a></p>
+            <p>&copy; 2026 Studio Gecko. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
